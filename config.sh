@@ -1,0 +1,6 @@
+SERVICE_PORT_LDAP="389"
+SERVICE_PORT_SLDAP="686"
+SERVICE_PASSWORD_LDAP="$(get_password ldap)"
+
+LDAP_ORGANIZATION="Yo Dawg, Inc"
+LDAP_DOMAIN="dev.dawger.dev"

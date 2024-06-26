@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# @cmd
+up() {
+	docker_compose up -d
+}
+
+# @cmd
+down() {
+	docker_compose down
+}
+
+# @cmd
+status() {
+	docker_compose ps
+}
+
+# @cmd
+logs() {
+	docker_compose logs
+}
+
+# @cmd
+list_users() {
+	:
+}
+
+# @cmd
+# @arg name
+add_user() {
+	:
+}
+
+# @cmd
+# @arg name
+remove_user() {
+	:
+}
+
+eval "$(argc --argc-eval "${0}" "${@}")"
+

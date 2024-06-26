@@ -1,0 +1,14 @@
+services:
+  server:
+    image: 'osixia/openldap'
+    ports:
+      - "${SERVICE_PORT_LDAP}:389"
+      - "${SERVICE_PORT_SLDAP}:686"
+    volumes:
+      - ${SERVICE_DATA}/ldap:/var/lib/ldap
+      - ${SERVICE_ENV_CONF}/ldap:/etc/ldap/slapd.d
+    environment:
+      LDAP_ORGANIZATION: "${LDAP_ORGANIZATION}"
+      LDAP_DOMAIN: "${LDAP_DOMAIN}"
+      LDAP_ADMIN_PASSWORD: "${SERVICE_PASSWORD_LDAP}"
+
