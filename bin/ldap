@@ -1,23 +1,27 @@
 #!/usr/bin/env bash
 
+set -ueo pipefail
+
+include "<docker>"
+
 # @cmd
 up() {
-	docker_compose up -d
+	docker::compose up -d
 }
 
 # @cmd
 down() {
-	docker_compose down
+	docker::compose down
 }
 
 # @cmd
 status() {
-	docker_compose ps
+	docker::compose ps
 }
 
 # @cmd
 logs() {
-	docker_compose logs
+	docker::compose logs
 }
 
 # @cmd
