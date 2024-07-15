@@ -2,31 +2,50 @@
 
 set -ueo pipefail
 
-include "<docker>"
-
 # @cmd
 up() {
+	include "<docker>"
+
 	docker::compose up -d
 }
 
 # @cmd
 down() {
+	include "<docker>"
+
 	docker::compose down
 }
 
 # @cmd
 status() {
+	include "<docker>"
+
 	docker::compose ps
 }
 
 # @cmd
 logs() {
+	include "<docker>"
+
 	docker::compose logs
 }
 
 # @cmd
+# @arg command[=bash|ldapsearch|slapcat|slapadd|slapdn|slappasswd|slaptest|slapacl|slapauth|slapindex|slapschema]
+# @arg args~
+exec() {
+	include "<docker>"
+
+	docker::compose exec server \
+		"${argc_command}" "${argc_args[@]}"
+}
+
+# @cmd
 list_users() {
-	:
+	"${0}" exec ldapsearch -LLL 'uid=*' \
+		-xw "${SERVICE_PASSWORD_LDAP}" \
+		-b "ou=users,${LDAP_BASE_RDN}" \
+		-D "cn=admin,${LDAP_BASE_RDN}"
 }
 
 # @cmd
